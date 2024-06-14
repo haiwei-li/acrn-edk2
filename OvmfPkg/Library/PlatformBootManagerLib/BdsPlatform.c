@@ -17,6 +17,7 @@
 #include <Guid/RootBridgesConnectedEventGroup.h>
 #include <Protocol/FirmwareVolume2.h>
 #include <Library/Tcg2PhysicalPresenceLib.h>
+#include <Library/AcrnS3Lib.h>
 
 
 //
@@ -383,7 +384,7 @@ PlatformBootManagerBeforeConsole (
   //
   EfiEventGroupSignal (&gEfiEndOfDxeEventGroupGuid);
 
-  if (QemuFwCfgS3Enabled ()) {
+  if (QemuFwCfgS3Enabled () || AcrnS3Enabled ()) {
     //
     // Save the boot script too. Note that this will require us to emit the
     // DxeSmmReadyToLock event just below, which in turn locks down SMM.

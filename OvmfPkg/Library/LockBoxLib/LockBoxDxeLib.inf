@@ -42,6 +42,7 @@
   UefiBootServicesTableLib
   QemuFwCfgLib
   QemuFwCfgS3Lib
+  AcrnS3Lib
 
 [Protocols]
   gEfiLockBoxProtocolGuid    ## SOMETIMES_PRODUCES

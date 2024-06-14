@@ -54,6 +54,7 @@
   NvVarsFileLib
   QemuFwCfgLib
   QemuFwCfgS3Lib
+  AcrnS3Lib
   LoadLinuxLib
   QemuBootOrderLib
   ReportStatusCodeLib

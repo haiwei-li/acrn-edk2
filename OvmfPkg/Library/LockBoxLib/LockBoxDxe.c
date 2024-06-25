@@ -20,6 +20,7 @@
 #include <Library/DebugLib.h>
 #include <Library/QemuFwCfgLib.h>
 #include <Library/QemuFwCfgS3Lib.h>
+#include <Library/AcrnS3Lib.h>
 #include <Protocol/LockBox.h>
 #include <LockBoxLib.h>
 
@@ -123,7 +124,7 @@ LockBoxDxeLibInitialize (
 
   Status = LockBoxLibInitialize ();
   if (!EFI_ERROR (Status)) {
-    if (QemuFwCfgS3Enabled ()) {
+    if (QemuFwCfgS3Enabled () || AcrnS3Enabled ()) {
       //
       // When S3 enabled, the first driver run with this library linked will
       // have this library constructor to install LockBox protocol on the

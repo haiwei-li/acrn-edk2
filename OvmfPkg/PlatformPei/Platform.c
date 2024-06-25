@@ -33,6 +33,7 @@
 #include <Library/PeiServicesLib.h>
 #include <Library/QemuFwCfgLib.h>
 #include <Library/QemuFwCfgS3Lib.h>
+#include <Library/AcrnS3Lib.h>
 #include <Library/ResourcePublicationLib.h>
 #include <Guid/MemoryTypeInformation.h>
 #include <Ppi/MasterBootMode.h>
@@ -697,6 +698,12 @@ InitializePlatform (
   if (QemuFwCfgS3Enabled ()) {
     DEBUG ((EFI_D_INFO, "S3 support was detected on QEMU\n"));
     mS3Supported = TRUE;
+  } else if (AcrnS3Enabled ()) {
+    DEBUG ((EFI_D_INFO, "S3 support was detected on ACRN\n"));
+    mS3Supported = TRUE;
+  }
+
+  if (mS3Supported) {
     Status = PcdSetBoolS (PcdAcpiS3Enable, TRUE);
     ASSERT_EFI_ERROR (Status);
   }
